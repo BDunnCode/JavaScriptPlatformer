@@ -114,7 +114,7 @@ Game.World.prototype = {
       this.tile_size
     );
 
-    /* We must redifine top since the last collision check because the object may
+    /* We must redefine top since the last collision check because the object may
       have moved since the last collision check. Also, the reason I check the top corners
       first is because if the object is moved down while checking the top, he will be
       moved back up when checking the bottom, and it is better to look like he is standing
