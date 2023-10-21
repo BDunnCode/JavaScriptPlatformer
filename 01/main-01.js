@@ -11,48 +11,54 @@ comprehensible, maintainable code as well as modularity. */
 /* Since I am loading my scripts dynamically from the rabbit-trap.html, I am wrapping
 my main JavaScript file in a load listener. This ensures that this code will not
 execute until the document has finished loading and I have access to all of my classes. */
-window.addEventListener("load", function (event) {
+window.addEventListener("load", function(event) {
+
   "use strict";
 
-  ///////////////////
-  //// FUNCTIONS ////
+      ///////////////////
+    //// FUNCTIONS ////
   ///////////////////
 
-  var render = function () {
+  var render = function() {
+
     display.renderColor(game.color);
     display.render();
+
   };
 
-  var update = function () {
+  var update = function() {
+
     game.update();
+
   };
 
-  /////////////////
-  //// OBJECTS ////
-  /////////////////
+        /////////////////
+      //// OBJECTS ////
+    /////////////////
 
-  /* Usually I just write my logical sections into object literals, but the temptation
-      to reference one inside of another is too great, and leads to sloppy coding.
-      In an effort to attain cleaner code, I have written classes for each section
-      and instantiate them here. */
+    /* Usually I just write my logical sections into object literals, but the temptation
+    to reference one inside of another is too great, and leads to sloppy coding.
+    In an effort to attain cleaner code, I have written classes for each section
+    and instantiate them here. */
 
-  /* The controller handles user input. */
-  var controller = new Controller();
-  /* The display handles window resizing, as well as the on screen canvas. */
-  var display = new Display(document.querySelector("canvas"));
-  /* The game will eventually hold our game logic. */
-  var game = new Game();
-  /* The engine is where the above three sections can interact. */
-  var engine = new Engine(1000 / 30, render, update);
+    /* The controller handles user input. */
+    var controller = new Controller();
+    /* The display handles window resizing, as well as the on screen canvas. */
+    var display    = new Display(document.querySelector("canvas"));
+    /* The game will eventually hold our game logic. */
+    var game       = new Game();
+    /* The engine is where the above three sections can interact. */
+    var engine     = new Engine(1000/30, render, update);
 
-  ////////////////////
-  //// INITIALIZE ////
-  ////////////////////
+        ////////////////////
+      //// INITIALIZE ////
+    ////////////////////
 
-  window.addEventListener("resize", display.handleResize);
-  window.addEventListener("keydown", controller.handleKeyDownUp);
-  window.addEventListener("keyup", controller.handleKeyDownUp);
+    window.addEventListener("resize",  display.handleResize);
+    window.addEventListener("keydown", controller.handleKeyDownUp);
+    window.addEventListener("keyup",   controller.handleKeyDownUp);
 
-  display.resize();
-  engine.start();
+    display.resize();
+    engine.start();
+
 });
