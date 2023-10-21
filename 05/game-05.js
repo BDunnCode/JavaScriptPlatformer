@@ -358,7 +358,7 @@ Game.World.Object.Player.prototype = {
     if (!this.jumping) {
 
       this.jumping     = true;
-      this.velocity_y -= 20;
+      this.velocity_y -= 15;
 
     }
 
